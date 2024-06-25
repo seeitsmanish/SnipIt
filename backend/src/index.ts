@@ -1,8 +1,7 @@
 import express from 'express';
-import { WebSocket, WebSocketServer } from 'ws';
 import { PORT } from './config/serverConfig';
 import { setUpWebSocketServer } from './webSocketServer';
-
+import roomCleanUpJob from './roomCleanUpJob';
 const app = express();
 
 const httpServer = app.listen(PORT, () => {
@@ -10,5 +9,6 @@ const httpServer = app.listen(PORT, () => {
 });
 
 setUpWebSocketServer(httpServer);
+roomCleanUpJob();
 
 
