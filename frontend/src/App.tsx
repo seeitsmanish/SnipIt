@@ -1,12 +1,12 @@
-import './App.css'
-import Home from './pages/Home'
+import "./App.css";
+import Home from "./pages/Home";
 
-function App () {
+function App() {
   return (
-    <div className='font-sans'>
+    <div className="font-sans">
       <Home />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
