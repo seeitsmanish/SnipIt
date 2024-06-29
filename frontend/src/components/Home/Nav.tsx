@@ -6,7 +6,7 @@ type NavProps = {};
 const Nav: React.FC<NavProps> = () => {
   return (
     <nav
-      style={{ animationDelay: "2s" }}
+      style={{ animationDelay: "1.5s" }}
       className="flex h-20 w-full animate-slideInFromTop items-center justify-between bg-transparent opacity-0"
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">

@@ -8,8 +8,8 @@ type FooterProps = {};
 const Footer: React.FC<FooterProps> = ({}) => {
   return (
     <footer
-      style={{ animationDelay: "2s" }}
-      className="animate-slideInFromBottom text-grey absolute bottom-10 w-full opacity-0"
+      style={{ animationDelay: "1.5s" }}
+      className="text-grey absolute bottom-10 w-full animate-slideInFromBottom opacity-0"
     >
       <div className="flex flex-col-reverse items-center gap-5 md:mx-10 md:flex-row md:justify-between">
         <div className="flex gap-5">
