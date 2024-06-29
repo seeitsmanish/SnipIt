@@ -6,7 +6,7 @@ type HomeProps = {};
 
 const Home: React.FC<HomeProps> = () => {
   return (
-    <div className="min-h-screen w-screen bg-zinc-950 bg-dots-pattern bg-dots-size">
+    <div className="min-h-screen w-screen bg-gray-950 bg-dots-pattern bg-dots-size">
       <Nav />
       <Hero />
       <Footer />

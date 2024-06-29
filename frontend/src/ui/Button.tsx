@@ -89,7 +89,7 @@ export const ButtonWithGradient: React.FC<ButtonProps> = ({
       >
         <button
           {...rest}
-          className="h-full w-full rounded-md bg-black px-2 py-3"
+          className="h-full w-full rounded-md bg-gray-950 px-2 py-3"
         >
           {children}
         </button>
