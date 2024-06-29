@@ -7,13 +7,24 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'dots-pattern': 'radial-gradient(grey 2px, transparent 2px)',
+        'dots-pattern': 'radial-gradient(grey 1px, transparent 1px)',
       },
       backgroundSize: {
         'dots-size': '75px 75px',
       },
 
       keyframes: {
+        slideInFromBottom: {
+          from: {
+            transform: "translateY(25%)",
+            opacity: "0%",
+          },
+          to: {
+            transform: "translateY(0%)",
+            opacity: "100%",
+          }
+        },
+
         slideInFromTop: {
           from: {
             transform: "translateY(-50%)",
@@ -26,7 +37,8 @@ export default {
         }
       },
       animation: {
-        slideInFromTop: 'slideInFromTop 800ms linear forwards'
+        slideInFromBottom: "slideInFromBottom 650ms linear forwards",
+        slideInFromTop: "slideInFromTop 650ms linear forwards"
       }
     },
   },
