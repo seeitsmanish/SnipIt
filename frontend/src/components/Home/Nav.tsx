@@ -4,10 +4,11 @@ import CoffeeMug from "/coffee-cup.png";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
+  const isHome = window.location.pathname === "/";
   return (
     <nav
       style={{ animationDelay: "1.5s" }}
-      className="flex h-20 w-full animate-slideInFromTop items-center justify-between bg-transparent opacity-0"
+      className={`flex h-20 w-full items-center justify-between bg-transparent opacity-0 ${isHome ? "animate-slideInFromTop" : "opacity-100"}`}
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">
         <a href="/" className="cursor-pointer">
