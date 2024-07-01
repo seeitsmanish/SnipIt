@@ -6,13 +6,15 @@ import Room from "./pages/Room";
 import NotFound from "./pages/NotFound";
 function App() {
   return (
-    <div className="min-h-screen w-screen bg-gray-950 bg-dots-pattern bg-dots-size font-sans">
+    <div className="flex h-screen w-screen flex-col bg-gray-950 bg-dots-pattern bg-dots-size font-sans">
+      <Nav />
       <Router>
-        <Nav />
         <Routes>
           {/* Home */}
           <Route path="/" element={<Home />} />
+          {/* Room */}
           <Route path="/:roomSlug" element={<Room />} />
+          {/* Not-Found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
