@@ -8,7 +8,7 @@ const Nav: React.FC<NavProps> = () => {
   return (
     <nav
       style={{ animationDelay: "1.5s" }}
-      className={`flex h-20 w-full items-center justify-between bg-transparent opacity-0 ${isHome ? "animate-slideInFromTop" : "opacity-100"}`}
+      className={`flex h-20 w-full items-center justify-between bg-gray-900 opacity-0 shadow-lg ${isHome ? "animate-slideInFromTop" : "opacity-100"}`}
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">
         <a href="/" className="cursor-pointer">
