@@ -1,14 +1,19 @@
 import React from "react";
 import { Button, ButtonWithGradient } from "../../ui/Button";
 import CoffeeMug from "/coffee-cup.png";
+import cn from "../../lib/cn";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
   const isHome = window.location.pathname === "/";
+  const isRoom = !isHome && window.location.pathname !== "/not-found";
   return (
     <nav
       style={{ animationDelay: "1.5s" }}
-      className={`flex h-20 w-full items-center justify-between bg-gray-900 opacity-0 shadow-lg ${isHome ? "animate-slideInFromTop" : "opacity-100"}`}
+      className={cn(
+        "flex h-20 w-full items-center justify-between bg-gray-900 opacity-0 shadow-lg",
+        isHome ? "animate-slideInFromTop" : "opacity-100",
+      )}
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">
         <a href="/" className="cursor-pointer">
@@ -17,12 +22,25 @@ const Nav: React.FC<NavProps> = () => {
           </span>
         </a>
 
-        <div className="flex gap-3">
-          <Button className="hidden font-medium md:block" size="sm">
-            Create New Room
-          </Button>
+        <div className="flex items-center gap-3">
+          {isRoom ? (
+            <p className="text-xl text-gray-300">
+              Room will clean after 24 Hrs of Inactivity
+            </p>
+          ) : (
+            <Button
+              className="hidden font-medium md:block md:h-[50px]"
+              size="sm"
+            >
+              Create New Room
+            </Button>
+          )}
           <a href="https://buymeacoffee.com/seeitsmanish" target="_blank">
-            <ButtonWithGradient variant="outline" size="sm">
+            <ButtonWithGradient
+              variant="outline"
+              size="sm"
+              className="h-[50px]"
+            >
               <div className="flex h-[2vh] items-center gap-2 md:h-full">
                 <span>Buy Me Coffee</span>
                 <img
