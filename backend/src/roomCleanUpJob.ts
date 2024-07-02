@@ -7,7 +7,7 @@ export default function roomCleanUpJob() {
     // Every 10 seconds in dev mode, every hour at minute 0 otherwise
     const cronSchedule = isDevMode ? '*/10 * * * * *' : '0 0 * * *';
     // 1 minute threshold in dev mode, 24 hours otherwise
-    const inAcitivityThreshold = isDevMode ? 60 : 60 * 60 * 24;
+    const inAcitivityThreshold = isDevMode ? 60 * 1000 : 60 * 60 * 24 * 1000;
     const cronJob = cron.schedule(cronSchedule, () => {
 
         const roomsManagerInstance = RoomManager.getInstance();
