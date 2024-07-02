@@ -1,14 +1,14 @@
 import { WebSocket } from "ws";
+import { WebSocketWithId } from "./webSocketServer";
 
 export interface Room {
     name: string;
     latestOperationTime: Date;
-    clients: Set<WebSocket>;
-    contentOfRoom: string,
+    clients: Set<WebSocketWithId>;
+    contentOfRoom: string;
 }
 
 export class RoomManager {
-
     private static instance: RoomManager; // Creates a static instance
     private rooms: Map<string, Room> = new Map();
 
@@ -23,12 +23,12 @@ export class RoomManager {
     }
 
     extractRoomUrl(request: Request) {
-        const requestArray = request.url?.split('/');
+        const requestArray = request.url?.split("/");
         if (requestArray.length > 2) return null;
         return requestArray[1];
     }
 
-    joinRoom(socketInstance: WebSocket, roomName: string | null) {
+    joinRoom(socketInstance: WebSocketWithId, roomName: string | null) {
         if (!roomName) return;
         let room = this.rooms.get(roomName);
         if (!room) {
@@ -36,31 +36,47 @@ export class RoomManager {
                 name: roomName,
                 latestOperationTime: new Date(),
                 clients: new Set(),
-                contentOfRoom: ''
+                contentOfRoom: "",
             };
         }
         room.clients.add(socketInstance);
         room = {
             ...room,
             latestOperationTime: new Date(),
-        }
+        };
         this.rooms.set(roomName, room);
+        this.broadcastMessageInRoom(room.name, room.contentOfRoom, socketInstance);
     }
 
-    broadcastMessageInRoom(roomName: string | null, message: string) {
+    broadcastMessageInRoom(
+        roomName: string | null,
+        message: string,
+        socketClient: WebSocketWithId
+    ) {
         if (!roomName) return;
         const room = this.rooms.get(roomName);
         if (room) {
-            room.contentOfRoom += message;
+            room.contentOfRoom = message;
+            room.latestOperationTime = new Date();
             room.clients.forEach((client) => {
-                if (client.readyState === WebSocket.OPEN) {
+                // console.log(client.id !== socketClient.id);
+                // console.log(client.id)
+                // console.log(socketClient.id)
+                if ((client.id !== socketClient.id) && (client.readyState === WebSocket.OPEN)) {
+                    console.log("room content: " + room.contentOfRoom);
+                    console.log("client id: " + client.id);
+                    console.log("socketclient id: " + socketClient.id);
+                    console.log();
                     client.send(room.contentOfRoom);
                 }
-            })
+            });
         }
     }
 
-    deleteSocketFromRoom(socketInstance: WebSocket, roomName: string | null) {
+    deleteSocketFromRoom(
+        socketInstance: WebSocketWithId,
+        roomName: string | null
+    ) {
         if (!roomName) return;
         const room = this.rooms.get(roomName);
         if (!room) return;
@@ -81,6 +97,11 @@ export class RoomManager {
     }
 
     logState() {
-        console.log(this.rooms);
+        this.rooms.forEach((room) => {
+            console.log({
+                room: room.name,
+                time: room.latestOperationTime.toLocaleString(),
+            });
+        });
     }
 }

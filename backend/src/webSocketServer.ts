@@ -1,26 +1,29 @@
 import WebSocket, { WebSocketServer } from "ws"
 import { Server } from 'http';
 import { RoomManager } from "./RoomManager";
+import { v4 as uuidv4 } from 'uuid';
 
 const roomManagerInstance = RoomManager.getInstance();
+
+export type WebSocketWithId = WebSocket & {
+    id: string;
+}
 
 export const setUpWebSocketServer = (httpServer: Server) => {
     const wss = new WebSocketServer({ server: httpServer });
 
-    // When a client connects to wss
-    wss.on('connection', (socketInstance: WebSocket, request: Request,) => {
+    wss.on('connection', (socketInstance: WebSocketWithId, request: Request,) => {
 
-        // If there was some error client connecting to wss
+        socketInstance.id = uuidv4();
+
         socketInstance.on('error', console.error);
 
-        // When a client connects, get the roomName and add it to rooms
         const roomName = roomManagerInstance.extractRoomUrl(request);
         roomManagerInstance.joinRoom(socketInstance, roomName);
 
-        // broadcast the message to all the members in room
         socketInstance.on('message', (data) => {
             const message = data.toString();
-            roomManagerInstance.broadcastMessageInRoom(roomName, message);
+            roomManagerInstance.broadcastMessageInRoom(roomName, message, socketInstance);
         })
 
         socketInstance.on('close', () => {
