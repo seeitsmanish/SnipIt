@@ -1,14 +1,15 @@
 import { Editor } from "@monaco-editor/react";
-import React, { useState } from "react";
-type CodeEditorProps = {};
+import React, { Dispatch, useState } from "react";
+type CodeEditorProps = {
+  code?: string;
+  setCode: Dispatch<React.SetStateAction<string>>;
+};
 
-const CodeEditor: React.FC<CodeEditorProps> = () => {
-  const [code, setCode] = useState<string | undefined>("");
-
+const CodeEditor: React.FC<CodeEditorProps> = ({ code, setCode }) => {
   return (
     <Editor
       value={code}
-      onChange={(value) => setCode(value)}
+      onChange={(value = "") => setCode(value)}
       className="rounded-sm border border-cyan-400"
       defaultValue=""
       language={"text"}
