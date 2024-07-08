@@ -1,5 +1,5 @@
 import { Editor } from "@monaco-editor/react";
-import React, { Dispatch, useState } from "react";
+import React, { Dispatch } from "react";
 type CodeEditorProps = {
   code?: string;
   setCode: Dispatch<React.SetStateAction<string>>;
