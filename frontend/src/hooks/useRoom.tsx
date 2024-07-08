@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useThrottle from "./useThrottle";
 
 export default function useRoom(roomSlug: string) {
