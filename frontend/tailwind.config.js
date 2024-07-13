@@ -24,7 +24,12 @@ export default {
             opacity: "100%",
           }
         },
-
+        ripple: {
+          to: {
+            transform: "scale(4)",
+            opacity: '0'
+          }
+        },
         slideInFromTop: {
           from: {
             transform: "translateY(-50%)",
@@ -38,7 +43,8 @@ export default {
       },
       animation: {
         slideInFromBottom: "slideInFromBottom 650ms linear forwards",
-        slideInFromTop: "slideInFromTop 650ms linear forwards"
+        slideInFromTop: "slideInFromTop 650ms linear forwards",
+        ripple: 'ripple 600ms linear forwards'
       }
     },
   },

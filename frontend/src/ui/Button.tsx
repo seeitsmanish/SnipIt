@@ -5,17 +5,38 @@ import cn from "../lib/cn";
 type ButtonVariant = "primary" | "secondary" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
 
+
+const createRipples = (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => {
+  const btn = e.currentTarget;
+  const { clientX, clientY } = e
+  const { offsetTop, offsetLeft, clientWidth, clientHeight } = btn;
+  const diameter = Math.max(clientWidth, clientHeight);
+  const circle = document.createElement('span');
+
+  Object.assign(circle.style, {
+    width: `${diameter}px`,
+    height: `${diameter}px`,
+    left: `${clientX - offsetLeft - diameter / 2}px`,
+    top: `${clientY - offsetTop - diameter / 2}px`,
+    transform: 'scale(0)',
+  });
+
+  circle.className = 'bg-[#ffffffb3] absolute rounded-full animate-ripple';
+  btn.appendChild(circle);
+  setTimeout(() => circle.remove(), 700);
+};
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
 };
 
-const buttonVariants = cva("rounded-md active:scale-[0.9] duration-500", {
+const buttonVariants = cva("rounded-md active:scale-[0.9] duration-500 relative overflow-hidden", {
   variants: {
     variant: {
-      primary: "bg-cyan-300 text-black hover:bg-cyan-200",
+      primary: "bg-cyan-300 text-black hover:bg-cyan-400",
       secondary: "bg-secondary text-black hover:bg-secondary-hover",
       outline:
         "border-2 border-white bg-transparent text-white hover:bg-opacity-50",
@@ -38,11 +59,16 @@ export const Button: React.FC<ButtonProps> = ({
   variant = "primary",
   size,
   className,
+  onClick,
   ...rest
 }) => {
   return (
     <button
       {...rest}
+      onClick={(e) => {
+        createRipples(e);
+        if (onClick) onClick(e);
+      }}
       className={cn(buttonVariants({ variant, size, className }))}
     >
       {children}
@@ -51,7 +77,7 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 const buttonWithGradientVariants = cva(
-  "rounded-md active:scale-[0.9] duration-500 p-[2px]",
+  "rounded-md active:scale-[0.9] duration-500 p-[2px] relative overflow-hidden",
   {
     variants: {
       variant: {
@@ -85,6 +111,9 @@ export const ButtonWithGradient: React.FC<ButtonProps> = ({
   if (variant === "outline") {
     return (
       <div
+        onClick={(e) => {
+          createRipples(e);
+        }}
         className={cn(buttonWithGradientVariants({ variant, size, className }))}
       >
         <button
