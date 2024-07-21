@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
-import useRoom from "../hooks/useRoom";
 type RoomProps = {};
 
 const Room: React.FC<RoomProps> = () => {
