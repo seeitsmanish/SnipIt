@@ -21,7 +21,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     const type = doc.getText("monaco");
 
     // Bind YJS to Monaco 
-    const binding = new MonacoBinding(type, editor.getModel()!, new Set([editor]), provider.awareness);
+    new MonacoBinding(type, editor.getModel()!, new Set([editor]), provider.awareness);
     console.log(provider.awareness);
   }
 
