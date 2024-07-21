@@ -10,12 +10,10 @@ const Room: React.FC<RoomProps> = () => {
   if (!roomSlug) {
     navigate("/not-found");
   }
-  const { code, setCode } = useRoom(roomSlug as string);
-
   return (
     <div className="flex flex-1 flex-col">
       <div className="flex-1">
-        <CodeEditor code={code} setCode={setCode} />
+        <CodeEditor roomSlug={roomSlug as string} />
       </div>
     </div>
   );

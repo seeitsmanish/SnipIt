@@ -1,18 +1,35 @@
-import { Editor } from "@monaco-editor/react";
-import React, { Dispatch } from "react";
-type CodeEditorProps = {
-  code?: string;
-  setCode: Dispatch<React.SetStateAction<string>>;
-};
+import { Editor, Monaco } from "@monaco-editor/react";
+import React, { useRef } from "react";
+import { MonacoBinding } from "y-monaco";
+import { WebsocketProvider } from 'y-websocket'
+import * as Y from 'yjs'
+import * as monaco from 'monaco-editor';
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ code, setCode }) => {
+type CodeEditorProps = {
+  roomSlug: string;
+}
+const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+
+  function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
+    editorRef.current = editor;
+
+    // Initialize YJS
+    const doc = new Y.Doc();
+
+    const provider = new WebsocketProvider("ws://localhost:8080", roomSlug, doc);
+    const type = doc.getText("monaco");
+
+    // Bind YJS to Monaco 
+    const binding = new MonacoBinding(type, editor.getModel()!, new Set([editor]), provider.awareness);
+    console.log(provider.awareness);
+  }
+
   return (
     <Editor
-      value={code}
-      onChange={(value = "") => setCode(value)}
       className="rounded-sm border border-cyan-400"
       defaultValue=""
-      language={"text"}
+      language="text"
       theme="snipitTheme"
       loading={<div className="text-cyan-600"> Loading...</div>}
       options={{
@@ -20,7 +37,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, setCode }) => {
         fontLigatures: true,
         fontFamily: '"JetBrains Mono",monospace',
       }}
-      beforeMount={(monaco) => {
+      beforeMount={(monaco: Monaco) => {
         monaco.editor.defineTheme("snipitTheme", {
           base: "hc-black",
           inherit: true,
@@ -34,7 +51,9 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, setCode }) => {
           },
         });
       }}
+      onMount={handleEditorDidMount}
     />
   );
 };
+
 export default CodeEditor;
