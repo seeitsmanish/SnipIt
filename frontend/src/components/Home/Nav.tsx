@@ -12,8 +12,9 @@ const Nav: React.FC<NavProps> = () => {
     <nav
       style={{ animationDelay: "1.5s" }}
       className={cn(
-        "flex h-20 w-full items-center justify-between bg-gray-900 opacity-0 shadow-lg",
+        "flex h-20 w-full items-center justify-between opacity-0 shadow-lg",
         isHome ? "animate-slideInFromTop absolute top-0" : "opacity-100",
+        isRoom && "bg-gray-900"
       )}
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">
