@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, ButtonWithGradient } from "../ui/Button";
 import { Link } from "react-router-dom";
+import { getRandomRoomSlug } from "../utils";
 
 const NotFound: React.FC = () => {
   return (
@@ -21,7 +22,12 @@ const NotFound: React.FC = () => {
             Home
           </ButtonWithGradient>
         </Link>
-        <Button variant="primary">Create New Room</Button>
+        <Button
+          onClick={() => {
+            const roomSlug = getRandomRoomSlug();
+            window.open(`/${roomSlug}`, '_blank');
+          }}
+          variant="primary">Create New Room</Button>
       </div>
     </div>
   );
