@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../ui/Button";
-
+import { getRandomRoomSlug } from "../../utils";
 type HeroProps = {};
 
 const Hero: React.FC<HeroProps> = () => {
@@ -32,6 +32,10 @@ const Hero: React.FC<HeroProps> = () => {
             size="lg"
             className="animate-slideInFromBottom text-md px-3 font-medium opacity-0 md:px-9 md:text-xl"
             style={{ animationDelay: "1500ms" }}
+            onClick={() => {
+              const roomSlug = getRandomRoomSlug();
+              window.open(`/${roomSlug}`, '_blank');
+            }}
           >
             Create New Room
           </Button>
