@@ -4,7 +4,7 @@ import { MonacoBinding } from "y-monaco";
 import { WebsocketProvider } from 'y-websocket'
 import * as Y from 'yjs'
 import * as monaco from 'monaco-editor';
-
+const BASE_URL = import.meta.env.VITE_BASE_BACKEND_URL
 type CodeEditorProps = {
   roomSlug: string;
 }
@@ -13,11 +13,17 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
 
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
-
     // Initialize YJS
     const doc = new Y.Doc();
 
-    const provider = new WebsocketProvider("ws://localhost:8080", roomSlug, doc);
+    const provider = new WebsocketProvider(BASE_URL, roomSlug, doc);
+
+    // Set up awareness information
+    provider.awareness.setLocalStateField('user', {
+      name: 'User ' + Math.floor(Math.random() * 100),
+      color: '#' + Math.floor(Math.random() * 16777215).toString(16)
+    });
+
     const type = doc.getText("monaco");
 
     // Bind YJS to Monaco 

@@ -25,7 +25,7 @@ const Nav: React.FC<NavProps> = () => {
         <div className="flex items-center gap-3">
           {isRoom ? (
             <p className="text-xl text-gray-300">
-              Room will clean after 24 Hrs of Inactivity
+              Room will as soon as everyone leaves
             </p>
           ) : (
             <Button
