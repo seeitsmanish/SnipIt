@@ -5,8 +5,8 @@ type HeroProps = {};
 
 const Hero: React.FC<HeroProps> = () => {
   return (
-    <div>
-      <div className="mt-[50px] md:mt-[100px]">
+    <div className="flex-1 flex flex-col items-center justify-center">
+      <div className="">
         <div className="flex flex-col items-center justify-center md:flex-row md:gap-8">
           <h1 className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 md:text-9xl">
             Code

@@ -11,7 +11,7 @@ import Room from "./pages/Room";
 import NotFound from "./pages/NotFound";
 function App() {
   return (
-    <div className="flex h-screen w-screen flex-col bg-gray-950 bg-dots-pattern bg-dots-size font-sans">
+    <div className="flex h-screen w-screen flex-col bg-gray-950 bg-dots-pattern bg-dots-size font-sans relative">
       <Nav />
       <Router>
         <Routes>
