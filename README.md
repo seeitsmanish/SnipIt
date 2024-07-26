@@ -1,6 +1,3 @@
-Sure! Here’s the complete `README.md` file for your SnipIt project:
-
-```markdown
 # SnipIt
 
 Welcome to **SnipIt** – your real-time collaborative code editor! Whether you're pairing up for a coding session or just looking to share snippets with friends, SnipIt is designed to make coding together easy and fun.
@@ -102,4 +99,3 @@ This project is not licensed. Feel free to use the code for personal or educatio
 ---
 
 Thank you for checking out SnipIt! Happy coding!
-```
