@@ -22,6 +22,7 @@ const LanguageSelector: React.FC<SideBarProps> = () => {
                 <SelectGroup>
                     <SelectItem value="plaintext">Text</SelectItem>
                     <SelectItem value="javascript">JavaScript</SelectItem>
+                    <SelectItem value="typescript">TypeScript</SelectItem>
                     <SelectItem value="cpp">C++</SelectItem>
                     <SelectItem value="ruby">Ruby</SelectItem>
                     <SelectItem value="python">Python</SelectItem>
