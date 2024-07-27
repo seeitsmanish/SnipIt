@@ -3,6 +3,7 @@ import { Button, ButtonWithGradient } from "../../ui/Button";
 import CoffeeMug from "/coffee-cup.png";
 import cn from "../../lib/cn";
 import { getRandomRoomSlug } from "../../utils";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
@@ -26,18 +27,23 @@ const Nav: React.FC<NavProps> = () => {
 
         <div className="flex items-center gap-3">
           {
-            !isRoom && (
-              <Button
-                className="hidden font-medium md:block md:h-[50px]"
-                size="sm"
-                onClick={() => {
-                  const roomSlug = getRandomRoomSlug();
-                  window.open(`/${roomSlug}`, '_blank');
-                }}
-              >
-                Create New Room
-              </Button>
-            )
+            isRoom ?
+              <div>
+                <LanguageSelector />
+              </div>
+              :
+              (
+                <Button
+                  className="hidden font-medium md:block md:h-[50px]"
+                  size="sm"
+                  onClick={() => {
+                    const roomSlug = getRandomRoomSlug();
+                    window.open(`/${roomSlug}`, '_blank');
+                  }}
+                >
+                  Create New Room
+                </Button>
+              )
           }
           <a href="https://buymeacoffee.com/seeitsmanish" target="_blank">
             <ButtonWithGradient

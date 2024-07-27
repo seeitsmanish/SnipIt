@@ -11,7 +11,7 @@ const Room: React.FC<RoomProps> = () => {
   }
   return (
     <div className="flex flex-1 flex-col">
-      <div className="flex-1">
+      <div className="h-full">
         <CodeEditor roomSlug={roomSlug as string} />
       </div>
     </div>
