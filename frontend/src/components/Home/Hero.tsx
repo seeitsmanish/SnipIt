@@ -6,15 +6,15 @@ type HeroProps = {};
 const Hero: React.FC<HeroProps> = () => {
   return (
     <div className="flex-1 flex flex-col items-center relative">
-      <div className="h-full w-full flex flex-col md:flex-row">
-        <div className="h-full md:w-[40%] flex flex-col items-center justify-center ">
+      <div className="h-full w-full flex flex-col md:flex-row md:gap-10">
+        <div className="h-full md:w-[40%] flex flex-col items-center justify-center p-4 ">
           <div className="flex items-center justify-center md:flex-row gap-4 md:gap-8">
-            <h1 className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 md:text-7xl">
+            <h1 className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 lg:text-7xl md:text-6xl">
               Code
             </h1>
             <h1
               style={{ animationDelay: "500ms" }}
-              className="animate-slideInFromBottom bg-gradient-to-r from-blue-300 to-green-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 md:text-7xl"
+              className="animate-slideInFromBottom bg-gradient-to-r from-blue-300 to-green-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 lg:text-7xl md:text-6xl"
             >
               Share
             </h1>
@@ -22,7 +22,7 @@ const Hero: React.FC<HeroProps> = () => {
           <div className="flex justify-center">
             <h1
               style={{ animationDelay: "1000ms" }}
-              className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 via-blue-300 to-green-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 md:mt-4 md:text-7xl"
+              className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 via-blue-300 to-green-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 md:mt-4 lg:text-7xl md:text-6xl"
             >
               Collaborate
             </h1>
@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = () => {
           </div>
         </div>
         <div style={{ animationDelay: '1s' }} className="h-full hidden md:flex md:w-[60%] items-center justify-end opacity-0 animate-slideInFromRight">
-          <ImageExampleCard3D className="mr-10" />
+          <ImageExampleCard3D />
         </div>
       </div>
 
