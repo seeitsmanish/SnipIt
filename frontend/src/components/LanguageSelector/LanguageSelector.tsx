@@ -18,7 +18,7 @@ const LanguageSelector: React.FC<SideBarProps> = () => {
             <SelectTrigger className="bg-transparent border-2 border-white rounded-md h-[50px] w-[140px] text-white">
                 <SelectValue placeholder="Select a Language" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-950 text-white">
                 <SelectGroup>
                     <SelectItem value="plaintext">Text</SelectItem>
                     <SelectItem value="javascript">JavaScript</SelectItem>
