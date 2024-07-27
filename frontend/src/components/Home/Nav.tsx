@@ -4,18 +4,19 @@ import CoffeeMug from "/coffee-cup.png";
 import cn from "../../lib/cn";
 import { getRandomRoomSlug } from "../../utils";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
+import { useRoom } from "../../context/RoomContext";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
   const isHome = window.location.pathname === "/";
-  const isRoom = !isHome && window.location.pathname !== "/not-found";
+  const { isRoom } = useRoom();
   return (
     <nav
       style={{ animationDelay: "1.5s" }}
       className={cn(
-        "flex h-20 w-full items-center justify-between opacity-0 shadow-lg",
+        "flex h-20 w-full items-center justify-between opacity-0",
         isHome ? "animate-slideInFromTop" : "opacity-100",
-        isRoom && "bg-gray-900"
+        isRoom && "bg-gray-900 shadow-lg"
       )}
     >
       <div className="mx-2 flex w-full items-center justify-between md:mx-10">
