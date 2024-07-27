@@ -9,9 +9,13 @@ import {
 } from "react-router-dom";
 import Room from "./pages/Room";
 import NotFound from "./pages/NotFound";
+import ShootingStars from "./aceternity/components/ui/shooting-stars";
+import { StarsBackground } from "./aceternity/components/ui/stars-background";
 function App() {
+  const isHome = window.location.pathname === "/";
+  const notFound = window.location.pathname === "/not-found";
   return (
-    <div className="flex h-screen w-screen flex-col bg-gray-950 bg-dots-pattern bg-dots-size font-sans relative">
+    <div className="flex h-screen w-screen flex-col justify-between bg-transparent bg-dots-size font-sans relative">
       <Nav />
       <Router>
         <Routes>
@@ -25,6 +29,14 @@ function App() {
           <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
       </Router>
+      {
+        (isHome || notFound) && (
+          <div className="absolute w-screen h-screen z-[-1] bg-gray-950">
+            <ShootingStars maxDelay={5000} />
+            <StarsBackground starDensity={0.0005} />
+          </div>
+        )
+      }
     </div>
   );
 }

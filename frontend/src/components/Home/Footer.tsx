@@ -5,11 +5,11 @@ import instagramImgSrc from "/instagram.png";
 import twitterImgSrc from "/twitter.png";
 type FooterProps = {};
 
-const Footer: React.FC<FooterProps> = ({}) => {
+const Footer: React.FC<FooterProps> = ({ }) => {
   return (
     <footer
       style={{ animationDelay: "1.5s" }}
-      className="text-grey absolute bottom-10 w-full animate-slideInFromBottom opacity-0"
+      className="text-grey w-full animate-slideInFromBottom opacity-0 mb-10"
     >
       <div className="flex flex-col-reverse items-center gap-5 md:mx-10 md:flex-row md:justify-between">
         <div className="flex gap-5">

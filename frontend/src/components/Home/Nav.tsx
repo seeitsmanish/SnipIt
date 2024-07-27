@@ -13,7 +13,7 @@ const Nav: React.FC<NavProps> = () => {
       style={{ animationDelay: "1.5s" }}
       className={cn(
         "flex h-20 w-full items-center justify-between opacity-0 shadow-lg",
-        isHome ? "animate-slideInFromTop absolute top-0" : "opacity-100",
+        isHome ? "animate-slideInFromTop" : "opacity-100",
         isRoom && "bg-gray-900"
       )}
     >
