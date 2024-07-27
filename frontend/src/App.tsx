@@ -38,7 +38,7 @@ function App() {
       </LanguageProvider>
       {
         !isRoom && (
-          <div className="absolute w-screen h-screen z-[-1] bg-gray-950">
+          <div className="absolute w-screen h-screen z-[-1] bg-slate-950">
             <ShootingStars maxDelay={5000} />
             <StarsBackground starDensity={0.0005} />
           </div>

@@ -82,7 +82,7 @@ const buttonWithGradientVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-gradient-to-r from-cyan-300 via-blue-300 to-green-300 text-black hover:bg-cyan-200",
+          "bg-gradient-to-r from-blue-500 to-green-400 text-gray-950 hover:bg-cyan-200",
         secondary: "bg-secondary text-black hover:bg-secondary-hover",
         outline:
           "bg-gradient-to-r from-cyan-300 via-blue-300 to-green-300 text-white",

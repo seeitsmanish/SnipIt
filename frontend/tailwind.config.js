@@ -41,6 +41,15 @@ module.exports = {
             opacity: '0'
           }
         },
+        writingText: {
+          from: {
+            opacity: "0%",
+          },
+          to: {
+            "width": "100%",
+            "opacity": "100%"
+          }
+        },
         slideInFromTop: {
           from: {
             transform: "translateY(-50%)",
@@ -48,6 +57,16 @@ module.exports = {
           },
           to: {
             transform: "translateY(0%)",
+            opacity: "100%",
+          }
+        },
+        slideInFromRight: {
+          from: {
+            transform: "translateX(10%)",
+            opacity: "0%",
+          },
+          to: {
+            transform: "translateX(0%)",
             opacity: "100%",
           }
         },
@@ -63,9 +82,11 @@ module.exports = {
       animation: {
         slideInFromBottom: "slideInFromBottom 650ms linear forwards",
         slideInFromTop: "slideInFromTop 650ms linear forwards",
+        slideInFromRight: "slideInFromRight 650ms linear forwards",
         ripple: 'ripple 600ms linear forwards',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        writingText: "writingText 500ms linear forwards"
       },
     },
   },

@@ -34,8 +34,9 @@ const Nav: React.FC<NavProps> = () => {
               </div>
               :
               (
-                <Button
-                  className="hidden font-medium md:block md:h-[50px]"
+                <ButtonWithGradient
+                  variant="primary"
+                  className="hidden md:block md:h-[50px] font-semibold px-1"
                   size="sm"
                   onClick={() => {
                     const roomSlug = getRandomRoomSlug();
@@ -43,7 +44,7 @@ const Nav: React.FC<NavProps> = () => {
                   }}
                 >
                   Create New Room
-                </Button>
+                </ButtonWithGradient>
               )
           }
           <a href="https://buymeacoffee.com/seeitsmanish" target="_blank">
