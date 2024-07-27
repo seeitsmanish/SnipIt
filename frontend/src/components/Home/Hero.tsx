@@ -39,8 +39,8 @@ const Hero: React.FC<HeroProps> = () => {
             }}> <CircleCheck className="text-green-500 size-4 md:size-6" /> <span> Share Room Slug with Friends </span> </p>
           </div>
         </div>
-        <div style={{ animationDelay: '1s' }} className="h-full hidden md:flex md:w-[60%] items-center justify-end overflow-hidden opacity-0 animate-slideInFromRight">
-          <ImageExampleCard3D className="mr-10 bg-gradient-to-r from-blue-500 to-green-500" />
+        <div style={{ animationDelay: '1s' }} className="h-full hidden md:flex md:w-[60%] items-center justify-end opacity-0 animate-slideInFromRight">
+          <ImageExampleCard3D className="mr-10" />
         </div>
       </div>
 
