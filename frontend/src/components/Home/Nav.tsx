@@ -36,7 +36,7 @@ const Nav: React.FC<NavProps> = () => {
               (
                 <ButtonWithGradient
                   variant="primary"
-                  className="hidden md:block md:h-[50px] font-semibold px-1"
+                  className="hidden md:block md:h-[50px] font-bold px-1"
                   size="sm"
                   onClick={() => {
                     const roomSlug = getRandomRoomSlug();
