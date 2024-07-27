@@ -11,7 +11,7 @@ Welcome to **SnipIt** – your real-time collaborative code editor! Whether you'
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React, Monaco Editor
+- **Frontend**: React, Monaco Editor, Acertenity, Shadcn
 - **Backend**: Express
 - **Real-Time Collaboration**: Yjs, y-websocket
 - **Deployment**: Vercel for frontend, backend, AWS EC2
