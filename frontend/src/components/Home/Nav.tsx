@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonWithGradient } from "../../ui/Button";
+import { ButtonWithGradient } from "../../ui/Button";
 import CoffeeMug from "/coffee-cup.png";
 import cn from "../../lib/cn";
 import { getRandomRoomSlug } from "../../utils";
