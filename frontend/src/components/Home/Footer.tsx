@@ -9,7 +9,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
   return (
     <footer
       style={{ animationDelay: "1.5s" }}
-      className="text-grey w-full animate-slideInFromBottom opacity-0 mb-10"
+      className="text-grey w-full animate-slideInFromBottom opacity-0 mb-5 md:mb-10"
     >
       <div className="flex flex-col-reverse items-center gap-5 md:mx-10 md:flex-row md:justify-between">
         <div className="flex gap-5">

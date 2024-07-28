@@ -18,7 +18,7 @@ function App() {
 
   const { isRoom } = useRoom();
   return (
-    <div className={`flex h-screen w-screen flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-gray-950"}`}>
+    <div className={`flex h-screen w-screen flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-slate-950"}`}>
       <LanguageProvider>
         <Nav />
         <Router>
