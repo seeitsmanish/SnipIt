@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
           <a href="https://www.instagram.com/seeitsmanish/" target="_blank">
             <img
               src={instagramImgSrc}
-              className="size-[30px] cursor-pointer duration-300 hover:scale-[1.3] md:size-[40px]"
+              className="size-[32px] cursor-pointer duration-300 hover:scale-[1.3] md:size-[40px]"
             />
           </a>
           <a href="https://x.com/seeitsmanish" target="_blank">
@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
             src={heartImgSrc}
             className="size-[20px] duration-300 hover:scale-[1.2] md:size-[40px]"
           />
-          <span className="text-xl"> by Manish</span>
+          <span className="md:text-xl"> by Manish</span>
         </div>
       </div>
     </footer>

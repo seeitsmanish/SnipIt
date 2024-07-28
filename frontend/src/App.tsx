@@ -18,7 +18,7 @@ function App() {
 
   const { isRoom } = useRoom();
   return (
-    <div className={`flex h-screen w-screen flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-slate-950"}`}>
+    <div className={`flex h-[100dvh] w-[100dvw] flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-slate-950"}`}>
       <LanguageProvider>
         <Nav />
         <Router>
@@ -38,7 +38,7 @@ function App() {
       </LanguageProvider>
       {
         !isRoom && (
-          <div className="absolute w-screen h-screen z-[-1] bg-slate-950">
+          <div className="absolute inset-0 z-[-1] bg-slate-950">
             <ShootingStars maxDelay={5000} />
             <StarsBackground starDensity={0.0005} />
           </div>
