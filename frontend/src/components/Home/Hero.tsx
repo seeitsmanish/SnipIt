@@ -44,7 +44,7 @@ const Hero: React.FC<HeroProps> = () => {
               }}> <CircleCheck className="text-green-500 size-4 md:size-6" /> <span> Share Room Slug with Friends </span>
               </p>
               <Button
-                className="text-xs font-bold w-full md:hidden opacity-0 animate-slideInFromBottom"
+                className="text-base font-bold w-full md:hidden opacity-0 animate-slideInFromBottom"
                 style={{ animationDelay: '3000ms' }}
                 onClick={() => {
                   const roomSlug = getRandomRoomSlug();
