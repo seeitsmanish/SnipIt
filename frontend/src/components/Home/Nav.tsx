@@ -5,11 +5,14 @@ import cn from "../../lib/cn";
 import { getRandomRoomSlug } from "../../utils";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import { useRoom } from "../../context/RoomContext";
+import { useUsers } from "../../context/UsersContext";
+import { UserCircle2Icon } from "lucide-react";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
   const isHome = window.location.pathname === "/";
   const { isRoom } = useRoom();
+  const { users } = useUsers();
   return (
     <nav
       style={{ animationDelay: "1.5s" }}
@@ -29,7 +32,14 @@ const Nav: React.FC<NavProps> = () => {
         <div className="flex items-center gap-3">
           {
             isRoom ?
-              <div>
+              <div className="flex items-center gap-3 md:gap-10">
+                <div className=" flex items-center gap-1 text-white h-fit w-fit">
+                  <div className="relative">
+                    <UserCircle2Icon className="size-8 md:size-10 font" strokeWidth='1' />
+                    <div className="size-2 md:size-3 absolute right-1 bottom-0 bg-green-600 rounded-full" />
+                  </div>
+                  <span className="text-sm md:text-base">{users}</span>
+                </div>
                 <LanguageSelector />
               </div>
               :
@@ -51,7 +61,7 @@ const Nav: React.FC<NavProps> = () => {
             <ButtonWithGradient
               variant="outline"
               size="sm"
-              className="h-[50px] hidden md:block"
+              className={cn('h-[50px]', isRoom ? 'hidden' : 'block')}
             >
               <div className="flex h-[2vh] items-center gap-2 md:h-full">
                 <span>Buy Me Coffee</span>

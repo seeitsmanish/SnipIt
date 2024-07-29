@@ -6,6 +6,7 @@ import * as Y from 'yjs'
 import * as monaco from 'monaco-editor';
 import { useLanguage } from "../../context/LanguageContext";
 import Loader from "../Loader/Loader";
+import { useUsers } from "../../context/UsersContext";
 
 const BASE_URL = import.meta.env.VITE_BASE_BACKEND_URL;
 
@@ -20,6 +21,7 @@ type AwarenessState = {
 
 const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
   const { language, setLanguage } = useLanguage();
+  const { setUsers } = useUsers();
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const providerRef = useRef<WebsocketProvider | null>(null);
   const docRef = useRef<Y.Doc | null>(null);
@@ -39,6 +41,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
 
     provider.awareness.on('update', () => {
       const states = provider.awareness.getStates();
+      setUsers(states.size);
+
       let latestLanguage = language;
       let latestTimestamp = initialAwarenessState.timestamp;
 
@@ -76,6 +80,8 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     console.log("Language updated:", language);
   }, [language]);
 
+
+
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
 
@@ -84,6 +90,10 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
       new MonacoBinding(yText, editor.getModel()!, new Set([editor]), providerRef.current.awareness);
     }
   }
+
+  useEffect(() => {
+    setUsers(providerRef.current?.awareness.getStates().size || 0);
+  }, [providerRef.current]);
 
   return (
     <div className="h-full">
