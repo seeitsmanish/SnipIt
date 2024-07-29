@@ -9,7 +9,7 @@ export function ImageExampleCard3D({ className }: { className?: string }) {
                 <div className="bg-gradient-to-r rounded-md from-blue-500 to-green-500 p-5">
                     <img
                         src={ImageExampleSrc}
-                        className="h-full w-full rounded-md group-hover/card:shadow-xl"
+                        className="h-full w-full rounded-lg group-hover/card:shadow-xl"
                         alt="thumbnail"
                     />
                 </div>
