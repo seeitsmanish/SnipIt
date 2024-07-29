@@ -5,6 +5,7 @@ import { WebsocketProvider } from 'y-websocket'
 import * as Y from 'yjs'
 import * as monaco from 'monaco-editor';
 import { useLanguage } from "../../context/LanguageContext";
+import Loader from "../Loader/Loader";
 
 const BASE_URL = import.meta.env.VITE_BASE_BACKEND_URL;
 
@@ -35,7 +36,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
       timestamp: 0,
     };
     provider.awareness.setLocalState(initialAwarenessState);
-
 
     provider.awareness.on('update', () => {
       const states = provider.awareness.getStates();
@@ -92,7 +92,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
         defaultValue=""
         language={language}
         theme="snipitTheme"
-        loading={<div className="text-cyan-600">Loading...</div>}
+        loading={<Loader className='bg-gray-950' loaderClassName="size-[40px] text-white" />}
         options={{
           fontSize: 18,
           fontLigatures: true,
@@ -113,6 +113,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
           });
         }}
         onMount={handleEditorDidMount}
+
       />
     </div>
   );

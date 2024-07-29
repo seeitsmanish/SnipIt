@@ -51,7 +51,7 @@ const Nav: React.FC<NavProps> = () => {
             <ButtonWithGradient
               variant="outline"
               size="sm"
-              className="h-[50px]"
+              className="h-[50px] hidden md:block"
             >
               <div className="flex h-[2vh] items-center gap-2 md:h-full">
                 <span>Buy Me Coffee</span>

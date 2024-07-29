@@ -15,7 +15,7 @@ const LanguageSelector: React.FC<SideBarProps> = () => {
     const { language, setLanguage } = useLanguage();
     return (
         <Select onValueChange={setLanguage} value={language}>
-            <SelectTrigger className="bg-transparent border-2 border-white rounded-md h-[50px] w-[140px] text-white">
+            <SelectTrigger className="bg-transparent border-2 border-white rounded-md h-[40px] w-[120px] md:h-[50px] md:w-[140px] text-white">
                 <SelectValue placeholder="Select a Language" />
             </SelectTrigger>
             <SelectContent className="bg-gray-950 text-white">

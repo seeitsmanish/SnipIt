@@ -1,17 +1,11 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import CodeEditor from "../components/CodeEditor/CodeEditor";
-import { useRoom } from "../context/RoomContext";
-type RoomProps = {};
+import withRoom from "../hocs/withRoom";
+type RoomProps = {
+  roomSlug?: string;
+};
 
-const Room: React.FC<RoomProps> = () => {
-  const { roomSlug } = useParams();
-  const { updateIsRoom } = useRoom();
-  updateIsRoom(true);
-  const navigate = useNavigate();
-  if (!roomSlug) {
-    navigate("/not-found");
-  }
+const Room: React.FC<RoomProps> = ({ roomSlug }) => {
   return (
     <div className="flex flex-1 flex-col">
       <div className="h-full">
@@ -20,4 +14,4 @@ const Room: React.FC<RoomProps> = () => {
     </div>
   );
 };
-export default Room;
+export default withRoom(Room);

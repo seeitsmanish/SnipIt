@@ -16,7 +16,7 @@ import { useRoom } from "./context/RoomContext";
 
 function App() {
 
-  const { isRoom } = useRoom();
+  const { isRoom, } = useRoom();
   return (
     <div className={`flex h-[100dvh] w-[100dvw] flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-slate-950"}`}>
       <LanguageProvider>

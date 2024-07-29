@@ -7,9 +7,9 @@ type HeroProps = {};
 
 const Hero: React.FC<HeroProps> = () => {
   return (
-    <div className="flex-1 flex flex-col items-center relative w-full">
-      <div className="h-full w-fit flex flex-col md:flex-row md:gap-10">
-        <div className="h-full md:w-[40%] flex flex-col items-center justify-center">
+    <div className="max-h-[80vh] flex flex-col h-fit items-center relative w-full">
+      <div className="w-fit flex flex-col md:flex-row md:gap-10">
+        <div className="md:w-[40%] flex flex-col items-center justify-center">
           <div className="w-fit">
             <div className="flex items-center justify-center md:flex-row gap-[11px] md:gap-[14px]">
               <h1 className="animate-slideInFromBottom bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-center text-[15vw] font-bold leading-tight text-transparent opacity-0 lg:text-7xl md:text-6xl">

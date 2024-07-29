@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 type RoomContextType = {
     isRoom: boolean;
@@ -9,6 +9,12 @@ const RoomContext = createContext<RoomContextType | undefined>(undefined);
 
 export const RoomProvider = ({ children }: { children: ReactNode }) => {
     const [isRoom, updateIsRoom] = useState(false);
+
+    useEffect(() => {
+        console.log(window.location.href);
+        console.log(isRoom)
+    }, [isRoom])
+
     return (
         <RoomContext.Provider value={{ isRoom, updateIsRoom }}>
             {children}

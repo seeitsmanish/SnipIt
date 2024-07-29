@@ -36,7 +36,7 @@ const Footer: React.FC<FooterProps> = ({ }) => {
           <span className="md:text-xl">Made with </span>
           <img
             src={heartImgSrc}
-            className="size-[20px] duration-300 hover:scale-[1.2] md:size-[40px]"
+            className="size-[20px] hover:scale-[1.2] md:size-[40px] animate-beat"
           />
           <span className="md:text-xl"> by Manish</span>
         </div>

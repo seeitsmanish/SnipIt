@@ -70,6 +70,17 @@ module.exports = {
             opacity: "100%",
           }
         },
+        beat: {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          }
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -86,7 +97,8 @@ module.exports = {
         ripple: 'ripple 600ms linear forwards',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        writingText: "writingText 500ms linear forwards"
+        writingText: "writingText 500ms linear forwards",
+        beat: "beat 2s linear infinite"
       },
     },
   },
