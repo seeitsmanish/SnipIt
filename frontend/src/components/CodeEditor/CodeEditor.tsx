@@ -1,12 +1,13 @@
 import { Editor, Monaco } from "@monaco-editor/react";
 import React, { useEffect, useRef } from "react";
 import { MonacoBinding } from "y-monaco";
-import { WebsocketProvider } from 'y-websocket'
-import * as Y from 'yjs'
-import * as monaco from 'monaco-editor';
+import { WebsocketProvider } from "y-websocket";
+import * as Y from "yjs";
+import * as monaco from "monaco-editor";
 import { useLanguage } from "../../context/LanguageContext";
 import Loader from "../Loader/Loader";
 import { useUsers } from "../../context/UsersContext";
+import { useMarkdown } from "../../context/MarkdownContext";
 
 const BASE_URL = import.meta.env.VITE_BASE_BACKEND_URL;
 
@@ -25,12 +26,17 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const providerRef = useRef<WebsocketProvider | null>(null);
   const docRef = useRef<Y.Doc | null>(null);
+  const { markdown, setMarkdown } = useMarkdown();
 
   useEffect(() => {
     const doc = new Y.Doc();
     docRef.current = doc;
 
-    const provider = new WebsocketProvider(`${BASE_URL}/collaboration`, roomSlug, doc);
+    const provider = new WebsocketProvider(
+      `${BASE_URL}/collaboration`,
+      roomSlug,
+      doc,
+    );
     providerRef.current = provider;
 
     const initialAwarenessState: AwarenessState = {
@@ -39,7 +45,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     };
     provider.awareness.setLocalState(initialAwarenessState);
 
-    provider.awareness.on('update', () => {
+    provider.awareness.on("update", () => {
       const states = provider.awareness.getStates();
       setUsers(states.size);
 
@@ -80,14 +86,17 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     console.log("Language updated:", language);
   }, [language]);
 
-
-
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
 
     if (docRef.current && providerRef.current) {
       const yText = docRef.current.getText("monaco");
-      new MonacoBinding(yText, editor.getModel()!, new Set([editor]), providerRef.current.awareness);
+      new MonacoBinding(
+        yText,
+        editor.getModel()!,
+        new Set([editor]),
+        providerRef.current.awareness,
+      );
     }
   }
 
@@ -98,11 +107,18 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
   return (
     <div className="h-full">
       <Editor
+        value={markdown}
+        onChange={(value) => setMarkdown(value)}
         className="rounded-sm"
         defaultValue=""
         language={language}
         theme="snipitTheme"
-        loading={<Loader className='bg-gray-950' loaderClassName="size-[40px] text-white" />}
+        loading={
+          <Loader
+            className="bg-gray-950"
+            loaderClassName="size-[40px] text-white"
+          />
+        }
         options={{
           fontSize: 18,
           fontLigatures: true,
@@ -123,7 +139,6 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
           });
         }}
         onMount={handleEditorDidMount}
-
       />
     </div>
   );

@@ -21,6 +21,7 @@ const LanguageSelector: React.FC<SideBarProps> = () => {
             <SelectContent className="bg-gray-950 text-white">
                 <SelectGroup>
                     <SelectItem value="plaintext">Text</SelectItem>
+                    <SelectItem value="markdown">Markdown</SelectItem>
                     <SelectItem value="javascript">JavaScript</SelectItem>
                     <SelectItem value="typescript">TypeScript</SelectItem>
                     <SelectItem value="cpp">C++</SelectItem>
