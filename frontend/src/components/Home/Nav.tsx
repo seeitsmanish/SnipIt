@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonWithGradient } from "../../ui/Button";
+import { Button } from "../../ui/Button";
 import CoffeeMug from "/coffee-cup.png";
 import cn from "../../lib/cn";
 import { getRandomRoomSlug } from "../../utils";
@@ -10,62 +10,53 @@ import { UserCircle2Icon } from "lucide-react";
 type NavProps = {};
 
 const Nav: React.FC<NavProps> = () => {
-  const isHome = window.location.pathname === "/";
   const { isRoom } = useRoom();
   const { users } = useUsers();
   return (
     <nav
-      style={{ animationDelay: "1.5s" }}
       className={cn(
-        "flex h-20 w-full items-center justify-between opacity-0",
-        isHome ? "animate-slideInFromTop" : "opacity-100",
-        isRoom && "bg-gray-900 shadow-lg"
+        `mx-auto mt-10 flex h-20 w-[70%] max-w-[1440px] items-center justify-between rounded-xl border border-gray-700 px-5`,
+        isRoom && "my-2 w-[98%] p-3",
       )}
     >
-      <div className="mx-2 flex w-full items-center justify-between md:mx-10">
-        <a href="/" className="cursor-pointer">
-          <span className="bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-[10vw] text-transparent md:text-[50px]">
-            SnipIt.
-          </span>
+      <div className="logo">
+        <a href="/">
+          <span className="text-3xl text-purple-400">SnipIt</span>
         </a>
+      </div>
 
-        <div className="flex items-center gap-3">
-          {
-            isRoom ?
-              <div className="flex items-center gap-3 md:gap-10">
-                <div className=" flex items-center gap-1 text-white h-fit w-fit">
-                  <div className="relative">
-                    <UserCircle2Icon className="size-8 md:size-10 font" strokeWidth='1' />
-                    <div className="size-2 md:size-3 absolute right-1 bottom-0 bg-green-600 rounded-full" />
-                  </div>
-                  <span className="text-sm md:text-base">{users}</span>
-                </div>
-                <LanguageSelector />
-              </div>
-              :
-              (
-                <ButtonWithGradient
-                  variant="primary"
-                  className="hidden md:block md:h-[50px] font-bold px-1"
-                  size="sm"
-                  onClick={() => {
-                    const roomSlug = getRandomRoomSlug();
-                    window.open(`/${roomSlug}`, '_blank');
-                  }}
-                >
-                  Create New Room
-                </ButtonWithGradient>
-              )
-          }
+      {isRoom ? (
+        <div className="flex items-center gap-3 md:gap-10">
+          <div className="flex h-fit w-fit items-center gap-1 text-white">
+            <div className="relative">
+              <UserCircle2Icon
+                className="font size-8 text-purple-400 md:size-10"
+                strokeWidth="1"
+              />
+              <div className="absolute bottom-0 right-1 size-2 rounded-full bg-green-600 md:size-3" />
+            </div>
+            <span className="text-sm md:text-base">{users}</span>
+          </div>
+          <LanguageSelector />
+        </div>
+      ) : (
+        <div className="flex items-center gap-5">
+          <Button
+            className="bg-purple-400 p-3 font-semibold hover:bg-purple-500"
+            onClick={() => {
+              const roomSlug = getRandomRoomSlug();
+              window.open(`/${roomSlug}`, "_blank");
+            }}
+          >
+            Code Now
+          </Button>
+
           <a href="https://buymeacoffee.com/seeitsmanish" target="_blank">
-            <ButtonWithGradient
-              variant="outline"
-              size="sm"
-              className={cn('h-[50px]',
-                isRoom && 'hidden md:block'
-              )}
+            <Button
+              variant="light"
+              className={cn("p-3 font-semibold", isRoom && "hidden md:block")}
             >
-              <div className="flex h-[2vh] items-center gap-2 md:h-full">
+              <div className="flex items-center gap-2">
                 <span>Buy Me Coffee</span>
                 <img
                   src={CoffeeMug}
@@ -73,10 +64,10 @@ const Nav: React.FC<NavProps> = () => {
                   alt="Coffee_Pic"
                 />
               </div>
-            </ButtonWithGradient>
+            </Button>
           </a>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

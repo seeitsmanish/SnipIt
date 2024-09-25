@@ -1,9 +1,9 @@
 import { Editor, Monaco } from "@monaco-editor/react";
 import React, { useEffect, useRef } from "react";
 import { MonacoBinding } from "y-monaco";
-import { WebsocketProvider } from 'y-websocket'
-import * as Y from 'yjs'
-import * as monaco from 'monaco-editor';
+import { WebsocketProvider } from "y-websocket";
+import * as Y from "yjs";
+import * as monaco from "monaco-editor";
 import { useLanguage } from "../../context/LanguageContext";
 import Loader from "../Loader/Loader";
 import { useUsers } from "../../context/UsersContext";
@@ -30,7 +30,11 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     const doc = new Y.Doc();
     docRef.current = doc;
 
-    const provider = new WebsocketProvider(`${BASE_URL}/collaboration`, roomSlug, doc);
+    const provider = new WebsocketProvider(
+      `${BASE_URL}/collaboration`,
+      roomSlug,
+      doc,
+    );
     providerRef.current = provider;
 
     const initialAwarenessState: AwarenessState = {
@@ -39,7 +43,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     };
     provider.awareness.setLocalState(initialAwarenessState);
 
-    provider.awareness.on('update', () => {
+    provider.awareness.on("update", () => {
       const states = provider.awareness.getStates();
       setUsers(states.size);
 
@@ -80,14 +84,17 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
     console.log("Language updated:", language);
   }, [language]);
 
-
-
   function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
 
     if (docRef.current && providerRef.current) {
       const yText = docRef.current.getText("monaco");
-      new MonacoBinding(yText, editor.getModel()!, new Set([editor]), providerRef.current.awareness);
+      new MonacoBinding(
+        yText,
+        editor.getModel()!,
+        new Set([editor]),
+        providerRef.current.awareness,
+      );
     }
   }
 
@@ -102,7 +109,12 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
         defaultValue=""
         language={language}
         theme="snipitTheme"
-        loading={<Loader className='bg-gray-950' loaderClassName="size-[40px] text-white" />}
+        loading={
+          <Loader
+            className="bg-gray-950"
+            loaderClassName="size-[40px] text-white"
+          />
+        }
         options={{
           fontSize: 18,
           fontLigatures: true,
@@ -115,15 +127,14 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
             rules: [],
             colors: {
               "editor.background": "#040712",
-              "editor.selectionBackground": "#70E1FA",
-              "editor.lineHighlight": "#70E1FA",
+              "editor.selectionBackground": "#C084FC",
+              "editor.lineHighlight": "#C084FC",
               "editor.lineHighlightBorder": "#040712",
-              "editorLineNumber.foreground": "#70E1FA",
+              "editorLineNumber.foreground": "#C084FC",
             },
           });
         }}
         onMount={handleEditorDidMount}
-
       />
     </div>
   );

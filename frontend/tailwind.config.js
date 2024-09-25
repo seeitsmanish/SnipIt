@@ -94,7 +94,7 @@ module.exports = {
         slideInFromBottom: "slideInFromBottom 650ms linear forwards",
         slideInFromTop: "slideInFromTop 650ms linear forwards",
         slideInFromRight: "slideInFromRight 650ms linear forwards",
-        ripple: 'ripple 600ms linear forwards',
+        ripple: 'ripple 900ms linear forwards',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         writingText: "writingText 500ms linear forwards",

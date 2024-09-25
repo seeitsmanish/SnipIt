@@ -9,16 +9,12 @@ import {
 } from "react-router-dom";
 import Room from "./pages/Room";
 import NotFound from "./pages/NotFound";
-import ShootingStars from "./aceternity/components/ui/shooting-stars";
-import { StarsBackground } from "./aceternity/components/ui/stars-background";
-
-import { useRoom } from "./context/RoomContext";
 
 function App() {
-
-  const { isRoom, } = useRoom();
   return (
-    <div className={`flex h-[100dvh] w-[100dvw] flex-col justify-between bg-transparent bg-dots-size font-sans relative ${isRoom && "bg-slate-950"}`}>
+    <div
+      className={`justify relative flex h-[100dvh] w-[100dvw] flex-col bg-gray-950 font-sans`}
+    >
       <Nav />
       <Router>
         <Routes>
@@ -29,19 +25,9 @@ function App() {
           {/* Not-Found */}
           <Route path="/not-found" element={<NotFound />} />
           {/* Redirect unmatched routes to not-found */}
-          <Route path="*" element={
-            <Navigate to="/not-found" />
-          } />
+          <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
       </Router>
-      {
-        !isRoom && (
-          <div className="absolute inset-0 z-[-1] bg-slate-950">
-            <ShootingStars maxDelay={5000} />
-            <StarsBackground starDensity={0.0005} />
-          </div>
-        )
-      }
     </div>
   );
 }
