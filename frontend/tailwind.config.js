@@ -1,3 +1,5 @@
+const { transform } = require('typescript');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -89,6 +91,40 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "blob-motion-1": {
+          "0%": {
+            transform: "translate(0, 0) scale(1)",
+          },
+          "33%": {
+            transform: "translate(300px, 300px) scale(1.3)",
+          },
+          "50%": {
+            transform: "translate(200px, 3000) scale(0.8)",
+          },
+          "66%": {
+            transform: "translate(-20px, 200px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0, 0) scale(1)",
+          },
+        },
+        "blob-motion-2": {
+          "0%": {
+            transform: "translate(0, 0) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, 30px) scale(1.3)",
+          },
+          "50%": {
+            transform: "translate(-10px, 30px) scale(0.8)",
+          },
+          "66%": {
+            transform: "translate(-30px, -10x) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0, 0) scale(1)",
+          },
+        }
       },
       animation: {
         slideInFromBottom: "slideInFromBottom 650ms linear forwards",
@@ -98,7 +134,9 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         writingText: "writingText 500ms linear forwards",
-        beat: "beat 2s linear infinite"
+        beat: "beat 2s linear infinite",
+        "blob-motion-1": "blob-motion-1 5s linear infinite",
+        "blob-motion-2": "blob-motion-2 5s linear infinite",
       },
     },
   },

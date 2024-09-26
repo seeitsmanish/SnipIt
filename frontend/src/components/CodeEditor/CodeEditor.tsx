@@ -103,7 +103,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ roomSlug }) => {
   }, [providerRef.current]);
 
   return (
-    <div className="h-full">
+    <div className="h-[85vh] overflow-hidden rounded-lg rounded-tl-none rounded-tr-none border border-t-0 border-gray-700">
       <Editor
         className="rounded-sm"
         defaultValue=""

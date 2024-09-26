@@ -8,9 +8,7 @@ type RoomProps = {
 const Room: React.FC<RoomProps> = ({ roomSlug }) => {
   return (
     <div className="flex flex-1 flex-col">
-      <div className="h-full">
-        <CodeEditor roomSlug={roomSlug as string} />
-      </div>
+      <CodeEditor roomSlug={roomSlug as string} />
     </div>
   );
 };
