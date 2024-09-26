@@ -21,8 +21,8 @@ function App() {
         isRoom && "py-0 md:py-5",
       )}
     >
-      {/* <div className="absolute left-5 top-6 -z-0 size-[300px] rounded-full bg-fuchsia-700 bg-opacity-25 blur-3xl lg:size-[500px]"></div> */}
-      {/* <div className="absolute bottom-3 right-3 -z-0 size-[300px] rounded-full bg-orange-300 bg-opacity-10 blur-3xl lg:size-[500px]"></div> */}
+      <div className="absolute left-5 top-6 -z-0 size-[300px] rounded-full bg-fuchsia-700 bg-opacity-25 blur-3xl lg:size-[500px]"></div>
+      <div className="absolute bottom-3 right-3 -z-0 size-[300px] rounded-full bg-orange-300 bg-opacity-10 blur-3xl lg:size-[500px]"></div>
       <div
         className={cn(
           `central-wrapper relative mx-5 flex max-w-[1440px] flex-1 flex-col lg:mx-auto lg:w-[70%]`,
