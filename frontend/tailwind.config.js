@@ -124,6 +124,20 @@ module.exports = {
           "100%": {
             transform: "translate(0, 0) scale(1)",
           },
+        },
+        "arrow-motion": {
+          "0%": {
+            transform: "translate(0, 0)",
+          },
+          "33%": {
+            transform: "translate(5px, 0px) ",
+          },
+          "66%": {
+            transform: "translate(-5px, 0px)",
+          },
+          "100%": {
+            transform: "translate(0, 0)",
+          },
         }
       },
       animation: {
@@ -137,6 +151,7 @@ module.exports = {
         beat: "beat 2s linear infinite",
         "blob-motion-1": "blob-motion-1 5s linear infinite",
         "blob-motion-2": "blob-motion-2 5s linear infinite",
+        "arrow-motion": "arrow-motion 3s ease-out infinite"
       },
     },
   },

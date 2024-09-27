@@ -15,7 +15,7 @@ const Nav: React.FC<NavProps> = () => {
   return (
     <nav
       className={cn(
-        `mt-5 flex w-full items-center justify-between rounded-xl border border-gray-700 p-3 md:mx-auto md:mt-6 md:p-5 lg:mt-10`,
+        `mt-5 flex h-[10vh] w-full items-center justify-between rounded-xl border border-gray-700 px-5 md:mx-auto md:mt-6 lg:mt-[5vh]`,
         isRoom &&
           "mt-2 h-20 rounded-bl-none rounded-br-none border-b-0 p-3 md:mt-1 lg:mt-1",
       )}
